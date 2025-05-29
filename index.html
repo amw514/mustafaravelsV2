@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mustafa Travels & Tours - Your Journey Begins Here</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #2c3e50;
+        --secondary: #3498db;
+        --accent: #e74c3c;
+        --light: #ecf0f1;
+        --dark: #2c3e50;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f5f5f5;
+        color: #333;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: var(--primary);
+        color: white;
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        z-index: 1001;
+      }
+
+      .logo span {
+        color: var(--secondary);
+      }
+
+      /* Mobile Menu Toggle */
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1001;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin-left: 1.5rem;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+        padding: 0.5rem 0;
+      }
+
+      nav ul li a:hover {
+        color: var(--secondary);
+      }
+
+      .language-selector {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 4px;
+        margin-left: 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .language-selector:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .language-selector option {
+        background: var(--primary);
+        color: white;
+        padding: 5px;
+      }
+
+      /* Hero Slider */
+      .hero-slider {
+        height: 500px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .slide.active {
+        opacity: 1;
+      }
+
+      .slide-content {
+        position: absolute;
+        bottom: 50px;
+        left: 50px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 30px;
+        max-width: 500px;
+        border-radius: 8px;
+        backdrop-filter: blur(10px);
+      }
+
+      .slide-content h2 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .slide-content p {
+        margin-bottom: 20px;
+        color: #f8f9fa;
+        line-height: 1.6;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .btn {
+        display: inline-block;
+        background: var(--secondary);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .btn:hover {
+        background: #2980b9;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Main Content */
+      .container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 20px;
+      }
+
+      section {
+        margin-bottom: 3rem;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        text-align: center;
+        margin: 2rem 0;
+      }
+
+      h2 {
+        font-size: 2rem;
+        border-bottom: 2px solid var(--secondary);
+        padding-bottom: 10px;
+        display: inline-block;
+      }
+
+      /* Destination Grid */
+      .destinations-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 2rem;
+      }
+
+      .destination-card {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .destination-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .card-content {
+        padding: 20px;
+      }
+
+      .card-content h3 {
+        margin-bottom: 10px;
+        color: var(--primary);
+      }
+
+      .card-content p {
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+
+      /* Services Section */
+      .services {
+        background: var(--light);
+        padding: 3rem 0;
+      }
+
+      .services-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 30px;
+        margin-top: 2rem;
+      }
+
+      .service-card {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .service-icon {
+        font-size: 3rem;
+        color: var(--secondary);
+        margin-bottom: 20px;
+      }
+
+      /* Testimonials Section */
+      .testimonials {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 4rem 0;
+      }
+
+      .testimonials-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        text-align: center;
+      }
+
+      .testimonials h2 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      .testimonials p {
+        color: #666;
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-top: 2rem;
+      }
+
+      .testimonial-card {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        position: relative;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .testimonial-card::before {
+        content: '"';
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        font-size: 4rem;
+        color: var(--secondary);
+        font-family: serif;
+        opacity: 0.3;
+      }
+
+      .testimonial-content {
+        text-align: left;
+      }
+
+      .stars {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .stars i {
+        color: #ffd700;
+        font-size: 1.2rem;
+        margin-right: 5px;
+      }
+
+      .testimonial-content p {
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 25px;
+        font-style: italic;
+        text-align: left;
+      }
+
+      .client-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+      }
+
+      .client-avatar {
+        width: 50px;
+        height: 50px;
+        background: var(--secondary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .client-details h4 {
+        color: var(--primary);
+        margin: 0 0 5px 0;
+        font-size: 1.1rem;
+      }
+
+      .client-details span {
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      /* Hajj & Umrah Section */
+      .hajj-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://cdn.pixabay.com/photo/2020/05/07/17/57/kaaba-5142502_1280.jpg");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 4rem 0;
+        text-align: center;
+      }
+
+      .hajj-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .hajj-packages {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+      }
+
+      /* Ziarat Packages Section */
+      .ziarat-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://images.pexels.com/photos/18766053/pexels-photo-18766053/free-photo-of-holy-shrine-of-abu-fadhl-al-abbas-in-karbela-in-iraq.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 4rem 0;
+        text-align: center;
+      }
+
+      .ziarat-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .ziarat-packages {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .package {
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--dark);
+        padding: 30px;
+        border-radius: 8px;
+        width: 300px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .package h3 {
+        color: var(--primary);
+        margin-bottom: 15px;
+      }
+
+      .package .price {
+        font-size: 1.8rem;
+        color: var(--accent);
+        font-weight: bold;
+        margin: 15px 0;
+      }
+
+      .package ul {
+        list-style: none;
+        text-align: left;
+        margin-bottom: 20px;
+      }
+
+      .package ul li {
+        margin-bottom: 8px;
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .package ul li:before {
+        content: "✓";
+        color: var(--secondary);
+        position: absolute;
+        left: 0;
+      }
+
+      /* Special Offers */
+      .special-offers {
+        background: var(--primary);
+        color: white;
+        padding: 3rem 0;
+        text-align: center;
+      }
+
+      .offers-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .offer-cards {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .offer-card {
+        background: white;
+        color: var(--dark);
+        padding: 20px;
+        border-radius: 8px;
+        width: 250px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .offer-card h3 {
+        color: var(--accent);
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 3rem 0;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 2rem;
+      }
+
+      .contact-info {
+        background: var(--light);
+        padding: 30px;
+        border-radius: 8px;
+      }
+
+      .contact-info h3 {
+        margin-bottom: 20px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .contact-icon {
+        font-size: 1.2rem;
+        color: var(--secondary);
+        margin-right: 15px;
+        width: 30px;
+        text-align: center;
+      }
+
+      .whatsapp-btn {
+        display: inline-block;
+        background: #25d366;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 10px;
+        transition: background 0.3s;
+      }
+
+      .whatsapp-btn:hover {
+        background: #128c7e;
+      }
+
+      .whatsapp-btn i {
+        margin-right: 8px;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--dark);
+        color: white;
+        padding: 3rem 0 1rem;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .footer-col h3 {
+        color: var(--secondary);
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+      }
+
+      .footer-col p {
+        margin-bottom: 15px;
+        line-height: 1.6;
+      }
+
+      .footer-col ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col ul li a {
+        color: #ecf0f1;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-col ul li a:hover {
+        color: var(--secondary);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        color: white;
+        font-size: 1.5rem;
+        transition: color 0.3s;
+      }
+
+      .social-links a:hover {
+        color: var(--secondary);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 2rem;
+        margin-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .mobile-menu-toggle {
+          display: block;
+        }
+
+        nav {
+          position: fixed;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100vh;
+          background: var(--primary);
+          transition: left 0.3s ease;
+          padding-top: 80px;
+          z-index: 999;
+        }
+
+        nav.active {
+          left: 0;
+        }
+
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+          gap: 0;
+          width: 100%;
+        }
+
+        nav ul li {
+          margin: 0;
+          width: 100%;
+          text-align: center;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul li a {
+          display: block;
+          padding: 20px;
+          font-size: 1.1rem;
+        }
+
+        .language-selector {
+          margin: 20px auto;
+          display: block;
+          width: 200px;
+        }
+
+        .header-container {
+          padding: 0 15px;
+        }
+
+        .hero-slider {
+          height: 400px;
+        }
+
+        .slide-content {
+          left: 15px;
+          bottom: 20px;
+          right: 15px;
+          max-width: none;
+          padding: 20px;
+        }
+
+        .slide-content h2 {
+          font-size: 1.8rem;
+        }
+
+        .container {
+          padding: 0 15px;
+        }
+
+        .destinations-grid {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .hajj-packages,
+        .ziarat-packages {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .package {
+          width: 100%;
+          max-width: 350px;
+        }
+
+        .offer-cards {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .offer-card {
+          width: 100%;
+          max-width: 300px;
+        }
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-container {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo {
+          font-size: 1.5rem;
+        }
+
+        .hero-slider {
+          height: 350px;
+        }
+
+        .slide-content h2 {
+          font-size: 1.5rem;
+        }
+
+        .slide-content p {
+          font-size: 0.9rem;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        .testimonial-card {
+          padding: 20px;
+        }
+
+        .client-info {
+          flex-direction: column;
+          text-align: center;
+          gap: 10px;
+        }
+      }
+
+      /* Tablet Responsive */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .destinations-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .testimonials-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Large Screen Optimization */
+      @media (min-width: 1400px) {
+        .container,
+        .services-container,
+        .testimonials-container,
+        .hajj-container,
+        .ziarat-container,
+        .offers-container,
+        .footer-container {
+          max-width: 1400px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header with Navigation -->
+    <header>
+      <div class="header-container">
+        <a href="#" class="logo">Mustafa <span>Travels</span></a>
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav id="mobileNav">
+          <ul>
+            <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+            <li>
+              <a href="#destinations" onclick="closeMobileMenu()"
+                >Destinations</a
+              >
+            </li>
+            <li>
+              <a href="#services" onclick="closeMobileMenu()">Services</a>
+            </li>
+            <li>
+              <a href="#testimonials" onclick="closeMobileMenu()"
+                >Testimonials</a
+              >
+            </li>
+            <li>
+              <a href="#hajj" onclick="closeMobileMenu()">Hajj & Umrah</a>
+            </li>
+            <li>
+              <a href="#ziarat" onclick="closeMobileMenu()">Ziarat Packages</a>
+            </li>
+            <li>
+              <a href="#offers" onclick="closeMobileMenu()">Special Offers</a>
+            </li>
+            <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+            <li>
+              <select class="language-selector">
+                <option value="en">English</option>
+                <option value="ur">Urdu</option>
+                <option value="es">Spanish</option>
+                <option value="ph">Filipino</option>
+              </select>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section class="hero-slider" id="home">
+      <div
+        class="slide active"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        "
+      >
+        <div class="slide-content">
+          <h2>Discover Paris</h2>
+          <p>
+            The city of love and lights awaits you with its iconic landmarks and
+            romantic atmosphere.
+          </p>
+          <a href="#contact" class="btn">Book Now</a>
+        </div>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        "
+      >
+        <div class="slide-content">
+          <h2>Explore Istanbul</h2>
+          <p>
+            Where East meets West in a fascinating blend of cultures, history,
+            and breathtaking architecture.
+          </p>
+          <a href="#contact" class="btn">Book Now</a>
+        </div>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        "
+      >
+        <div class="slide-content">
+          <h2>Experience Barcelona</h2>
+          <p>
+            Gaudi's masterpieces, vibrant streets, and Mediterranean charm make
+            this city unforgettable.
+          </p>
+          <a href="#contact" class="btn">Book Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="container" id="destinations">
+      <h2>Popular Destinations</h2>
+      <div class="destinations-grid">
+        <div class="destination-card">
+          <div
+            class="card-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Paris, France</h3>
+            <p>
+              Experience the romance of the Eiffel Tower, Louvre Museum, and
+              charming Parisian streets.
+            </p>
+            <a href="#contact" class="btn">Get Quote</a>
+          </div>
+        </div>
+        <div class="destination-card">
+          <div
+            class="card-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Istanbul, Turkey</h3>
+            <p>
+              Discover the rich history spanning two continents at Hagia Sophia,
+              Blue Mosque, and Grand Bazaar.
+            </p>
+            <a href="#contact" class="btn">Get Quote</a>
+          </div>
+        </div>
+        <div class="destination-card">
+          <div
+            class="card-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Barcelona, Spain</h3>
+            <p>
+              Marvel at Gaudí's architecture, relax on Mediterranean beaches,
+              and enjoy vibrant nightlife.
+            </p>
+            <a href="#contact" class="btn">Get Quote</a>
+          </div>
+        </div>
+        <div class="destination-card">
+          <div
+            class="card-image"
+            style="
+              background-image: url('https://images.pexels.com/photos/3757144/pexels-photo-3757144.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Madrid, Spain</h3>
+            <p>
+              Explore royal palaces, world-class museums, and the energetic
+              Plaza Mayor.
+            </p>
+            <a href="#contact" class="btn">Get Quote</a>
+          </div>
+        </div>
+        <div class="destination-card">
+          <div
+            class="card-image"
+            style="
+              background-image: url('https://images.pexels.com/photos/2377441/pexels-photo-2377441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Stockholm, Sweden</h3>
+            <p>
+              The beautiful archipelago city with historic Gamla Stan and modern
+              design.
+            </p>
+            <a href="#contact" class="btn">Get Quote</a>
+          </div>
+        </div>
+        <div class="destination-card">
+          <div
+            class="card-image"
+            style="
+              background-image: url('https://images.pexels.com/photos/720329/pexels-photo-720329.jpeg?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Interlaken, Switzerland</h3>
+            <p>Breathtaking Alpine scenery between two crystal-clear lakes.</p>
+            <a href="#contact" class="btn">Get Quote</a>
+          </div>
+        </div>
+        <div class="destination-card">
+          <div
+            class="card-image"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            "
+          ></div>
+          <div class="card-content">
+            <h3>New York, USA</h3>
+            <p>
+              The city that never sleeps with iconic landmarks like Times Square
+              and Statue of Liberty.
+            </p>
+            <a href="#contact" class="btn">Get Quote</a>
+          </div>
+        </div>
+        <div class="destination-card">
+          <div
+            class="card-image"
+            style="
+              background-image: url('https://cdn.pixabay.com/photo/2020/01/25/12/38/badshahimosque-4792462_1280.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Lahore, Pakistan</h3>
+            <p>
+              Rich Mughal heritage with Badshahi Mosque, Lahore Fort, and
+              delicious cuisine.
+            </p>
+            <a href="#contact" class="btn">Get Quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+      <div class="services-container">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-hotel"></i>
+            </div>
+            <h3>Hotel Reservations</h3>
+            <p>
+              Book your perfect stay worldwide with our extensive network of
+              hotels and resorts.
+            </p>
+            <a
+              href="https://wa.me/346114732117?text=Hi%20Mustafa%20Travels,%20I%20need%20help%20with%20hotel%20reservation"
+              class="whatsapp-btn"
+              ><i class="fab fa-whatsapp"></i> WhatsApp Us</a
+            >
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-plane"></i>
+            </div>
+            <h3>Airline Tickets</h3>
+            <p>
+              Best deals on flights to all destinations with major airlines
+              worldwide.
+            </p>
+            <a
+              href="https://wa.me/346114732117?text=Hi%20Mustafa%20Travels,%20I%20need%20a%20flight%20ticket%20quotation"
+              class="whatsapp-btn"
+              ><i class="fab fa-whatsapp"></i> WhatsApp Us</a
+            >
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-bus"></i>
+            </div>
+            <h3>Bus Tickets</h3>
+            <p>
+              Convenient and comfortable bus travel options across multiple
+              countries.
+            </p>
+            <a
+              href="https://wa.me/346114732117?text=Hi%20Mustafa%20Travels,%20I%20need%20a%20bus%20ticket%20quotation"
+              class="whatsapp-btn"
+              ><i class="fab fa-whatsapp"></i> WhatsApp Us</a
+            >
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-umbrella-beach"></i>
+            </div>
+            <h3>Tour Packages</h3>
+            <p>
+              Customized holiday packages with flights, hotels, and activities
+              included.
+            </p>
+            <a
+              href="https://wa.me/346114732117?text=Hi%20Mustafa%20Travels,%20I%20need%20information%20about%20tour%20packages"
+              class="whatsapp-btn"
+              ><i class="fab fa-whatsapp"></i> WhatsApp Us</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+      <div class="testimonials-container">
+        <h2>What Our Clients Say</h2>
+        <p>
+          Read reviews from our satisfied customers who have traveled with us
+        </p>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p>
+                "Mustafa Travels made our Umrah journey absolutely perfect. From
+                visa processing to accommodation, everything was handled
+                professionally. The hotels were excellent and the transportation
+                was comfortable. Highly recommended!"
+              </p>
+              <div class="client-info">
+                <div class="client-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="client-details">
+                  <h4>Ahmed Hassan</h4>
+                  <span>Umrah Package - March 2024</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p>
+                "Our family trip to Turkey was amazing! Mustafa Travels arranged
+                everything perfectly - flights, hotels, and guided tours.
+                Istanbul was breathtaking and the service was exceptional
+                throughout our journey."
+              </p>
+              <div class="client-info">
+                <div class="client-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="client-details">
+                  <h4>Maria Rodriguez</h4>
+                  <span>Turkey Tour Package - February 2024</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p>
+                "Excellent service for our Ziarat trip to Karbala and Najaf. The
+                arrangements were smooth, hotels were comfortable, and the
+                guided tours were very informative. Thank you for making our
+                spiritual journey memorable."
+              </p>
+              <div class="client-info">
+                <div class="client-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="client-details">
+                  <h4>Ali Raza</h4>
+                  <span>Ziarat Package - January 2024</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p>
+                "Professional and reliable service! Got the best flight deals to
+                Pakistan and the booking process was hassle-free. Customer
+                support was available 24/7 and very helpful. Will definitely
+                book again!"
+              </p>
+              <div class="client-info">
+                <div class="client-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="client-details">
+                  <h4>Sarah Khan</h4>
+                  <span>Flight Booking - December 2023</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p>
+                "Our European tour covering Paris, Barcelona, and Madrid was
+                fantastic! Every detail was perfectly planned. The hotels were
+                great, transportation was comfortable, and we had an
+                unforgettable experience."
+              </p>
+              <div class="client-info">
+                <div class="client-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="client-details">
+                  <h4>Mohammad Iqbal</h4>
+                  <span>Europe Tour Package - November 2023</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p>
+                "Booked our honeymoon trip to Switzerland through Mustafa
+                Travels. The scenic beauty of Interlaken was breathtaking and
+                the luxury hotel they arranged exceeded our expectations.
+                Perfect romantic getaway!"
+              </p>
+              <div class="client-info">
+                <div class="client-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="client-details">
+                  <h4>Fatima & Omar</h4>
+                  <span>Switzerland Honeymoon - October 2023</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hajj & Umrah Section -->
+    <section class="hajj-section" id="hajj">
+      <div class="hajj-container">
+        <h2>Hajj & Umrah Packages</h2>
+        <p>
+          Experience your spiritual journey with our carefully designed packages
+          including visa, flights, accommodation and transportation.
+        </p>
+        <div class="hajj-packages">
+          <div class="package">
+            <h3>Economy Package</h3>
+            <div class="price">€870</div>
+            <p>6 nights accommodation</p>
+            <ul>
+              <li>Return flight tickets</li>
+              <li>Visa processing</li>
+              <li>3-star hotel in Makkah & Madinah</li>
+              <li>Breakfast included</li>
+              <li>Transportation between cities</li>
+            </ul>
+            <a
+              href="https://wa.me/346114732117?text=Hi%20Mustafa%20Travels,%20I'm%20interested%20in%20the%20Economy%20Hajj/Umrah%20package"
+              class="whatsapp-btn"
+              ><i class="fab fa-whatsapp"></i> Book Now</a
+            >
+          </div>
+          <div class="package">
+            <h3>Business Class Package</h3>
+            <div class="price">€2100</div>
+            <p>6 nights luxury stay</p>
+            <ul>
+              <li>Business class flights</li>
+              <li>Visa processing</li>
+              <li>4-5 star hotels in Makkah & Madinah</li>
+              <li>Breakfast included</li>
+              <li>Private transportation</li>
+              <li>Airport transfers</li>
+            </ul>
+            <a
+              href="https://wa.me/346114732117?text=Hi%20Mustafa%20Travels,%20I'm%20interested%20in%20the%20Business%20Class%20Hajj/Umrah%20package"
+              class="whatsapp-btn"
+              ><i class="fab fa-whatsapp"></i> Book Now</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ziarat Packages Section -->
+    <section class="ziarat-section" id="ziarat">
+      <div class="ziarat-container">
+        <h2>Ziarat Packages - Karbala & Najaf</h2>
+        <p>
+          Special spiritual journeys for Ashura and Arbaeen with comprehensive
+          services
+        </p>
+        <div class="ziarat-packages">
+          <div class="package">
+            <h3>Economy Ziarat Package</h3>
+            <div class="price">€1300</div>
+            <p>7 days during Ashura/Arbaeen</p>
+            <ul>
+              <li>Return flight tickets</li>
+              <li>Visa processing assistance</li>
+              <li>3-star hotel in Karbala & Najaf</li>
+              <li>Daily meals included</li>
+              <li>Guided Ziarat tours</li>
+              <li>Transportation between holy sites</li>
+              <li>Special Ashura/Arbaeen arrangements</li>
+            </ul>
+            <a
+              href="https://wa.me/346114732117?text=Hi%20Mustafa%20Travels,%20I'm%20interested%20in%20the%20Economy%20Ziarat%20package%20for%20Karbala/Najaf"
+              class="whatsapp-btn"
+              ><i class="fab fa-whatsapp"></i> Book Now</a
+            >
+          </div>
+          <div class="package">
+            <h3>5-Star Ziarat Package</h3>
+            <div class="price">€2200</div>
+            <p>7 days luxury spiritual journey</p>
+            <ul>
+              <li>Business class flights</li>
+              <li>VIP visa processing</li>
+              <li>5-star hotels near holy shrines</li>
+              <li>Premium meals included</li>
+              <li>Private guided Ziarat tours</li>
+              <li>Air-conditioned private transport</li>
+              <li>Special Arbaeen/Ashura arrangements</li>
+              <li>Priority access to shrines</li>
+            </ul>
+            <a
+              href="https://wa.me/346114732117?text=Hi%20Mustafa%20Travels,%20I'm%20interested%20in%20the%205-Star%20Ziarat%20package%20for%20Karbala/Najaf"
+              class="whatsapp-btn"
+              ><i class="fab fa-whatsapp"></i> Book Now</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Special Offers Section -->
+    <section class="special-offers" id="offers">
+      <div class="offers-container">
+        <h2>Special Offers</h2>
+        <p>Limited time discounts for selected destinations</p>
+        <div class="offer-cards">
+          <div class="offer-card">
+            <h3>Philippines</h3>
+            <p>
+              15% off on all packages to Manila, Cebu, and Boracay. Valid until
+              December 2023.
+            </p>
+            <a
+              href="https://wa.me/346114732117?text=Hi%20Mustafa%20Travels,%20I'm%20interested%20in%20the%20Philippines%20special%20offer"
+              class="whatsapp-btn"
+              ><i class="fab fa-whatsapp"></i> Inquire</a
+            >
+          </div>
+          <div class="offer-card">
+            <h3>Latin America</h3>
+            <p>
+              10% discount on flights to Mexico, Brazil, and Argentina. Book
+              before November 2023.
+            </p>
+            <a
+              href="https://wa.me/346114732117?text=Hi%20Mustafa%20Travels,%20I'm%20interested%20in%20the%20Latin%20America%20special%20offer"
+              class="whatsapp-btn"
+              ><i class="fab fa-whatsapp"></i> Inquire</a
+            >
+          </div>
+          <div class="offer-card">
+            <h3>Pakistan</h3>
+            <p>
+              Combo deals for Lahore, Karachi, and Islamabad with free domestic
+              connections.
+            </p>
+            <a
+              href="https://wa.me/346114732117?text=Hi%20Mustafa%20Travels,%20I'm%20interested%20in%20the%20Pakistan%20special%20offer"
+              class="whatsapp-btn"
+              ><i class="fab fa-whatsapp"></i> Inquire</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact container" id="contact">
+      <h2>Contact Us</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Our Offices</h3>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <strong>Barcelona Office</strong><br />
+              Pastage Bernardi Martorel No:5 3/3<br />
+              Barcelona 08001, Spain
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <strong>Tarragona Office</strong><br />
+              Calle Del Baro Les Quatre Torres 14-A<br />
+              Tarragona 43002, Spain
+            </div>
+          </div>
+        </div>
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <div>
+              <strong>WhatsApp for Quotations:</strong><br />
+              +34-6114732117
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div>
+              <strong>Other Contact Numbers:</strong><br />
+              +34-632234216<br />
+              +34-631984997
+            </div>
+          </div>
+          <a href="https://wa.me/346114732117" class="whatsapp-btn"
+            ><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>About Mustafa Travels</h3>
+          <p>
+            Your trusted travel partner for all your holiday and business travel
+            needs. We specialize in creating memorable travel experiences with
+            our personalized services.
+          </p>
+          <div class="social-links">
+            <a
+              href="https://www.facebook.com/mustafatravelstours"
+              target="_blank"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/mustafatraveltours/"
+              target="_blank"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/ghulam-mustafa-434b479b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+              target="_blank"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#hajj">Hajj & Umrah</a></li>
+            <li><a href="#ziarat">Ziarat Packages</a></li>
+            <li><a href="#offers">Special Offers</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="#services">Hotel Reservations</a></li>
+            <li><a href="#services">Airline Tickets</a></li>
+            <li><a href="#services">Bus Tickets</a></li>
+            <li><a href="#services">Tour Packages</a></li>
+            <li><a href="#hajj">Hajj & Umrah</a></li>
+            <li><a href="#ziarat">Ziarat Tours</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contact Info</h3>
+          <p><i class="fas fa-phone"></i> +34-6114732117</p>
+          <p><i class="fas fa-envelope"></i> info@mustafatravels.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Barcelona, Spain</p>
+          <p><i class="fas fa-map-marker-alt"></i> Tarragona, Spain</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2024 Mustafa Travels & Tours. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      function toggleMobileMenu() {
+        const nav = document.getElementById("mobileNav");
+        const toggle = document.querySelector(".mobile-menu-toggle i");
+
+        nav.classList.toggle("active");
+
+        if (nav.classList.contains("active")) {
+          toggle.classList.remove("fa-bars");
+          toggle.classList.add("fa-times");
+        } else {
+          toggle.classList.remove("fa-times");
+          toggle.classList.add("fa-bars");
+        }
+      }
+
+      function closeMobileMenu() {
+        const nav = document.getElementById("mobileNav");
+        const toggle = document.querySelector(".mobile-menu-toggle i");
+
+        nav.classList.remove("active");
+        toggle.classList.remove("fa-times");
+        toggle.classList.add("fa-bars");
+      }
+
+      // Hero Slider
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+      const totalSlides = slides.length;
+
+      function showSlide(index) {
+        slides.forEach((slide) => slide.classList.remove("active"));
+        slides[index].classList.add("active");
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+      }
+
+      // Auto-advance slides every 5 seconds
+      setInterval(nextSlide, 5000);
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", function (event) {
+        const nav = document.getElementById("mobileNav");
+        const toggle = document.querySelector(".mobile-menu-toggle");
+
+        if (
+          !nav.contains(event.target) &&
+          !toggle.contains(event.target) &&
+          nav.classList.contains("active")
+        ) {
+          closeMobileMenu();
+        }
+      });
+    </script>
+  </body>
+</html>
